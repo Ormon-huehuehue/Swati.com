@@ -13,7 +13,8 @@ export default {
         foreground: "var(--foreground)",
         seagreen :'#67a241',
         weed :"#dce1d2",
-        grayish : '#4d4d49'
+        grayish : '#4d4d49',
+        bundlebar : '#dce1d7'
       },
       fontFamily: {
   			palanquin: [

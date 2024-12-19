@@ -14,7 +14,7 @@ export function ProductCard({ product }: { product: ProductNode }) {
           initial={{ scale: 1 }}
           whileHover={{ scale: 1.4 }}  
           transition={{ duration: 0.2 }} 
-          className="absolute top-[-40px] left-0 object-cover h-[120%]" // Properly centers and layers the image
+          className="absolute top-[-40px] left-0 object-cover h-[120%]" 
         />
         <div className="flex justify-center">
           <button
@@ -23,6 +23,7 @@ export function ProductCard({ product }: { product: ProductNode }) {
           >
             <GoPlus size={20} />
           </button>
+          {product.descriptionHtml}
         </div>
       </div>
       <div className="mt-4 flex flex-col">
