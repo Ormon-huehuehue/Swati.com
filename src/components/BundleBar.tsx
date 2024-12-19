@@ -22,17 +22,24 @@ const BundleBar = () => {
     <div className= 'fixed bottom-[-7px] w-full py-3 bg-bundlebar rounded-2xl'>
       <div className='flex justify-between px-10 w-screen'>
       <div className="flex">
-  {products && products.length > 0 ? (
-    products.map((item, index) => (
-      <BundleIcon product = {item} key={item.id}/>
-    ))
+      {products && products.length > 0 ? (
+    <div className="flex">
+     
+      <p className="relative bottom-[-15px] md:bottom-[-7px] font-medium md:text-lg mb-4 flex text-[10px]">
+        Total Products: {products.length}
+      </p>
+  
+      {products.map((item) => (
+        <BundleIcon product={item} key={item.id} />
+      ))}
+    </div>
   ) : (
-    
-    <p className= ' flex justify-center items-center gap-2 font-montserrat'><CiShoppingCart />
-Cart empty</p>
+    <p className="flex justify-center items-center gap-2 font-montserrat">
+      <CiShoppingCart />
+      Cart empty
+    </p>
   )}
-</div>
-    
+    </div>
         <CheckoutButton/>
       </div>
     </div>

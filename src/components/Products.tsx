@@ -49,6 +49,7 @@ const Products = () => {
   return (
     <div className= 'flex flex-col mb-50'>
       <h1 className= "font-bold text-4xl font-palanquin text-center py-5">CATEGORIES</h1>
+
       <div className='flex justify-center md:gap-10 gap-2 flex-wrap px-5 py-2'>
         {CATEGORIES_CONFIG.map((category, index)=>((
             <div key={index}>
@@ -63,7 +64,9 @@ const Products = () => {
             </div>
         )))}
       </div>
-      <ul className= 'flex py-7 flex-wrap gap-5 justify-center px-4'>
+      <h6 className= 'font-bold md:text-4xl font-montserrat text-start py-2 md:py-5 pl-[8vw] mt-2 md:mt-5 text-md'>FIRST {category} PRODUCTS</h6>
+
+      <ul className= 'flex md:py-7 py-4 flex-wrap gap-5 justify-center px-4'>
         {/* {products?.map(product=>((
             <ProductCard product={product.node} key={product.node.id}/>
         )))} */}
