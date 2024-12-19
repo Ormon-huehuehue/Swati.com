@@ -3,12 +3,12 @@ import React from 'react'
 const Discount = ({items, discount} : {items : number, discount : number}) => {
   return (
     <div className= 'flex-col'>
-        <h1 className= ' text-xl font-bold '>{items}+ items</h1>
-        <div className= ' flex w-full justify-between item-center h-auto text-seagreen gap-1.5'>
-            <p className= '  text-[3vw] font-extrabold'>{discount}</p>
-            <div className= ' flex flex-col items-center justify-center'>
-                <span className= 'font-extrabold text-2xl'>%</span>
-                <span className= 'text-[10px] font-bold'>OFF</span>
+        <h1 className= ' text-[2vw] font-bold font-montserrat'>{items}+ items</h1>
+        <div className= ' flex w-full justify-center item-center h-auto text-seagreen gap-1.5'>
+            <p className= '  text-[3vw] font-extrabold font-palanquin'>{discount}</p>
+            <div className= ' flex flex-col items-center justify-center gap-0'>
+                <span className= 'font-extrabold text-[1.5vw] font-montserrat'>%</span>
+                <span className= 'text-[0.8vw] font-extrabold font-palanquin'>OFF</span>
             </div>
 
         </div>

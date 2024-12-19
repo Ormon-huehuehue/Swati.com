@@ -11,9 +11,9 @@ const DISCOUNT_TIERS = [
 export default function Home() {
   return ( 
     <div className="h-screen">
-      <section className=  'bg-background flex flex-col py-5 mx-[120px] rounded-lg h-auto'>
-        <h1 className="text-center w-full text-[0.8vw]"> THE MORE YOU ADD, THE MORE YOU SAVE</h1>
-        <h1 className="font-bold text-center w-full text-[3vw]"> BUILD A CUSTOM PACK</h1>
+      <section className=  'bg-background flex flex-col py-5 sm:mx-[100px] rounded-lg h-auto'>
+        <h1 className="text-center w-full text-[1vw] mt-2 font-palanquin"> THE MORE YOU ADD, THE MORE YOU SAVE</h1>
+        <h1 className="font-bold text-center w-full text-[5vw] font-montserrat"> BUILD A CUSTOM PACK</h1>
         <div className = 'flex justify-center gap-[8vw] w-auto'>
           {DISCOUNT_TIERS.map((item, index)=>((
             <Discount items={item.minItems} discount={item.percentage} key={index}/>

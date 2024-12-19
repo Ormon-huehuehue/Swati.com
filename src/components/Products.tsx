@@ -43,13 +43,13 @@ const Products = () => {
 
   return (
     <div className= 'flex flex-col '>
-      <h1 className= "font-bold text-xl font-montserrat">Categories</h1>
+      <h1 className= "font-bold text-4xl font-palanquin text-center py-5">CATEGORIES</h1>
       <div className='flex justify-center gap-10'>
         {CATEGORIES_CONFIG.map((category, index)=>((
             <CustomButton label={category} key={index}/>
         )))}
       </div>
-      <ul className= 'flex py-5 flex-wrap gap-5 justify-start px-4'>
+      <ul className= 'flex py-5 flex-wrap gap-5 justify-center px-4'>
         {products?.map(product=>((
             <ProductCard product={product.node} key={product.node.id}/>
         )))}

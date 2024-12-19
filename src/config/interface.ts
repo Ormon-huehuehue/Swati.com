@@ -39,7 +39,7 @@ interface Price {
   }
   
   // Interface for product node
-  interface ProductNode {
+  export  interface ProductNode {
     id: string;
     title: string;
     descriptionHtml: string;
