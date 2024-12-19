@@ -42,7 +42,7 @@ const CustomCarousel = ({ product }: { product: ProductNode }) => {
   return (
     
     <motion.div
-      className="relative flex items-center justify-center overflow-hidden bg-gray-100 rounded-lg"
+      className="relative w-full max-w-xl flex items-center justify-center overflow-hidden bg-gray-100 rounded-lg"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       animate={{

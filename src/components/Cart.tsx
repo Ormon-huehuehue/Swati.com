@@ -44,30 +44,36 @@ const Cart = () => {
 
       if(products)
   return (
-    <div className= 'max-h-screen max-w-screen flex flex-col py-10 px-4 md:px-10'>
-        <div className='absolute top-5 left-5'>
+    <div className= 'max-h-screen max-w-screen flex flex-col  '>
+        <div className='flex flex-col w-fit py-4 pl-2'>
             <Link href="/">
                 <IoCaretBackCircle size={40} />
             </Link>
+            <h1 className="text-lg md:text-4xl font-bold font-montserrat h-fit  pl-1">CART</h1>
         </div>  
-        <h1 className="text-sm md:text-[4vw] font-bold font-montserrat mt-[50px]">CART</h1>
-    <ul className= 'flex md:py-7 py-4 flex-wrap gap-5 justify-start'>
+        
+    <ul className= 'flex md:py-7 py-4 flex-wrap gap-5 md:justify-start'>
         {/* {products?.map(product=>((
             <ProductCard product={product.node} key={product.id}/>
         )))} */}
-            <div  className= ' flex flex-col gap-5'>
+            <div  className= 'flex flex-col gap-5 md:mx-0 items-center justify-center md:justify-start md:items-start h-[70%] w-full md:pl-10'>
          {products?.map((product,index)=>((
-                <div key={index} className = 'flex border-2 rounded-lg'>
+                <div key={index} className = 'flex border-2 rounded-lg max-w-lg flex-col md:flex-row'>
                     <CustomCarousel product={product} key={index}/>
-                    <div className= ' flex flex-col py-5 px-2 relative'>
+                    <div className= ' flex flex-col py-5 px-2 relative gap-5 items-center'>
                         <h1 className='text-sm md:text-xl font-semibold font-montserrat px-1 text-grayish'>{product.title}</h1>
                        
-                        <button onClick={()=>removeFromCart(product.id)} className = "relative top-[150px] md:text-sm text-[10px] bg-grayish py-3 px-4 ml-5 text-white rounded-lg">
+                        <button onClick={()=>removeFromCart(product.id)} className = " md:text-sm text-[10px] bg-grayish py- p-4 ml-5 text-white rounded-lg">
                             REMOVE FROM CART
                         </button>
                     </div>
                 </div>
         )))}
+        {products.length == 0 && (
+            <div className='text-2xl text-black/20 flex mx-auto'>
+                Cart Is Empty
+            </div>
+        )}
         </div>
       </ul>
     </div>

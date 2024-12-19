@@ -10,7 +10,7 @@ import BundleBar from "@/components/BundleBar";
 
 export default function Home() {
   return ( 
-    <div className="min-h-screen pb-[70px]">
+    <div className="min-h-screen pb-[70px] max-w-screen-sm">
       <section>
         <Cart/>
       </section>
