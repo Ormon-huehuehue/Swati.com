@@ -4,6 +4,7 @@ import CheckoutButton from './CheckoutButton'
 import { ProductNode } from '@/config/interface'
 import BundleIcon from './BundleIcon'
 import { CiShoppingCart } from "react-icons/ci";
+import Link from 'next/link'
 
 
 const BundleBar = () => {
@@ -40,7 +41,9 @@ const BundleBar = () => {
     </p>
   )}
     </div>
+      <Link href={'/checkout'}>
         <CheckoutButton/>
+      </Link> 
       </div>
     </div>
   )
