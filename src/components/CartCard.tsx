@@ -6,8 +6,10 @@ import { FaCartPlus } from "react-icons/fa6";
 
 import { ProductNode } from '@/config/interface';
 import { useRecoilState, useRecoilValue } from "recoil";
+import { LuPlus } from "react-icons/lu";
 
-const CustomCarousel = ({ product }: { product: ProductNode }) => {
+
+const CartCard = ({ product }: { product: ProductNode }) => {
   const [isHovered, setIsHovered] = useState<boolean>(false)
   const imageUrl = product.images.edges[0].node.url;
 
@@ -65,7 +67,9 @@ const CustomCarousel = ({ product }: { product: ProductNode }) => {
         <motion.img
           src={imageUrl}
           alt="Carousel image"
-          className={`absolute w-full h-full object-cover ${isHovered ? "opacity-0" : "opacity-100"}  transition-all duration-200`}
+          className="absolute w-full h-full object-cover"
+          style={{ filter: "blur(0px) opacity(1)" }}
+          whileHover={{ filter: "blur(1px) opacity(0.1)" }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
         />
       </motion.div>
@@ -89,7 +93,7 @@ const CustomCarousel = ({ product }: { product: ProductNode }) => {
       <AnimatePresence>
   {isHovered && (
     <motion.div
-      className="absolute inset-0 items-center justify-center bg-black bg-opacity-[0.2] text-[12px] text-center px-4 py-5 rounded-lg pointer-events-none"
+      className="absolute inset-0 items-center justify-center bg-black bg-opacity-[0.02] text-[12px] text-center px-4 py-5 rounded-lg pointer-events-none"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0}}
@@ -104,7 +108,7 @@ const CustomCarousel = ({ product }: { product: ProductNode }) => {
       {/* Hover button */}
       {isHovered && (
         <motion.button
-          className="absolute flex bottom-8 md:text-[1vw] text-[0.6rem] rounded-md hover:bg-grayish font-montserrat px-2 py-2 justify-center items-center gap-2 bg-checkoutButton text-white"
+          className="absolute flex bottom-8 md:text-[1vw] text-[0.6rem] rounded-full hover:bg-grayish font-montserrat px-2 py-2 justify-center items-center gap-2 bg-checkoutButton text-white"
           initial={{ opacity: 0, scale: 1 }}
           animate={{ opacity: 1, scale: 1.3 }}
           exit={{ opacity: 0, scale: 0 }}
@@ -116,12 +120,13 @@ const CustomCarousel = ({ product }: { product: ProductNode }) => {
           }}
           onClick={addToCart}
         >
-            Add to cart
-          <FaCartPlus />
+           
+            <LuPlus />
+
         </motion.button>
       )}
     </motion.div>
   );
 };
 
-export default CustomCarousel;
+export default CartCard;

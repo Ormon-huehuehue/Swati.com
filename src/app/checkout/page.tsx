@@ -14,7 +14,6 @@ export default function Home() {
       <section>
         <Cart/>
       </section>
-      <BundleBar/>  
     </div>
   );
 }

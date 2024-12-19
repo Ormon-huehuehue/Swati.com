@@ -6,6 +6,7 @@ import { ProductNode } from '@/config/interface'
 import { IoCaretBackCircle } from "react-icons/io5";
 import Link from 'next/link';
 
+import CartCard from './CartCard';
 import CustomCarousel from './CustomCard';
 
 
@@ -43,27 +44,31 @@ const Cart = () => {
 
       if(products)
   return (
-    <div className= 'h-screen w-screen flex flex-col p-10'>
+    <div className= 'max-h-screen max-w-screen flex flex-col py-10 px-4 md:px-10'>
         <div className='absolute top-5 left-5'>
             <Link href="/">
                 <IoCaretBackCircle size={40} />
             </Link>
         </div>  
-        <h1 className="text-sm md:text-xl font-bold font-montserrat mt-[50px]">CART</h1>
-    <ul className= 'flex md:py-7 py-4 flex-wrap gap-5 justify-start px-4'>
+        <h1 className="text-sm md:text-[4vw] font-bold font-montserrat mt-[50px]">CART</h1>
+    <ul className= 'flex md:py-7 py-4 flex-wrap gap-5 justify-start'>
         {/* {products?.map(product=>((
             <ProductCard product={product.node} key={product.id}/>
         )))} */}
+            <div  className= ' flex flex-col gap-5'>
          {products?.map((product,index)=>((
-            <div key={index} className = 'flex'>
-                <CustomCarousel product={product} key={index}/>
-                <div className= ' flex flex-col'>
-                    <button onClick={()=>removeFromCart(product.id)} className = "bg-grayish py-3 px-8 ml-10 text-white rounded-lg">
-                        REMOVE FROM CART
-                    </button>
+                <div key={index} className = 'flex border-2 rounded-lg'>
+                    <CustomCarousel product={product} key={index}/>
+                    <div className= ' flex flex-col py-5 px-2 relative'>
+                        <h1 className='text-sm md:text-xl font-semibold font-montserrat px-1 text-grayish'>{product.title}</h1>
+                       
+                        <button onClick={()=>removeFromCart(product.id)} className = "relative top-[150px] md:text-sm text-[10px] bg-grayish py-3 px-4 ml-5 text-white rounded-lg">
+                            REMOVE FROM CART
+                        </button>
+                    </div>
                 </div>
-            </div>
         )))}
+        </div>
       </ul>
     </div>
   );
@@ -73,3 +78,15 @@ const Cart = () => {
 };
 
 export default Cart;
+
+const DescriptionElement = ({product}:{product: ProductNode})=>{
+
+    const rawHTML = product.descriptionHtml;
+    const description = rawHTML.replace(/<\/?p>/g, '');
+
+    return (
+        <div>
+            {description}
+        </div>
+    )
+}
