@@ -1,18 +1,66 @@
 "use client";
-import React, { useState } from "react";
+
+import React, {useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaRegArrowAltCircleRight } from "react-icons/fa";
+import { FaCartPlus } from "react-icons/fa6";
+
 import { ProductNode } from '@/config/interface';
+import { useRecoilState, useRecoilValue } from "recoil";
 
 const CustomCarousel = ({ product }: { product: ProductNode }) => {
-  const [isHovered, setIsHovered] = useState<boolean>(false);
-
+  const [isHovered, setIsHovered] = useState<boolean>(false)
   const imageUrl = product.images.edges[0].node.url;
 
   const rawHTML = product.descriptionHtml;
   const description = rawHTML.replace(/<\/?p>/g, '');
+  const id = product.id
+
+
+  const addToCart = () => {
+    let productArrayString = localStorage.getItem("products");
+    const productArray = productArrayString ? JSON.parse(productArrayString) : [];
+  
+    console.log("ProductArray:", productArray);
+  
+    // Check if the product already exists in the cart
+    const productExists = productArray.some((product: ProductNode) => product.id === id);
+    if (productExists) {
+      console.log("Product is already in cart");
+      return;
+    }
+  
+    // Add the product to the cart
+    productArray.push(product);
+  
+    // Save the updated array back to localStorage
+    localStorage.setItem("products", JSON.stringify(productArray));
+  
+    console.log("Product added to cart");
+  };
+  
+
+  const removeFromCart = () => {
+    let productArrayString = localStorage.getItem("products");
+    const productArray = productArrayString ? JSON.parse(productArrayString) : [];
+  
+    console.log("ProductArray:", productArray);
+  
+    // Check if the product exists in the cart
+    const updatedProductArray = productArray.filter(
+      (storedProduct: ProductNode) => storedProduct.id !== id
+    );
+  
+    // Save the updated array back to localStorage
+    localStorage.setItem("products", JSON.stringify(updatedProductArray));
+  
+    console.log("Product removed from cart");
+  };
+  
+
+
 
   return (
+    
     <motion.div
       className="relative flex items-center justify-center overflow-hidden bg-gray-100 rounded-lg"
       onMouseEnter={() => setIsHovered(true)}
@@ -78,13 +126,15 @@ const CustomCarousel = ({ product }: { product: ProductNode }) => {
       {/* Hover button */}
       {isHovered && (
         <motion.button
-          className="absolute top-3 right-3 font-bold font-sans text-white"
+          className="absolute top-3 right-7 text-[8px] rounded-sm hover:bg-grayish font-montserrat px-1 py-1 flex justify-center items-center gap-2 bg-checkoutButton text-white"
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1.3 }}
           exit={{ opacity: 0, scale: 0 }}
           transition={{ duration: 0.3 }}
+          onClick={addToCart}
         >
-          <FaRegArrowAltCircleRight />
+            Add to cart
+          <FaCartPlus />
         </motion.button>
       )}
     </motion.div>

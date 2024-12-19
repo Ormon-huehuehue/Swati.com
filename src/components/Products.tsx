@@ -9,6 +9,7 @@ import {CATEGORIES_CONFIG} from "../config/constants"
 import CustomCarousel from './CustomCard';
 
 
+
 const Products = () => {
   const [products, setProducts] = useState<ProductInterface[] | null>(null);
   const [loading, setLoading] = useState(false);
@@ -43,12 +44,12 @@ const Products = () => {
 
 
   return (
-    <div className= 'flex flex-col '>
+    <div className= 'flex flex-col mb-50'>
       <h1 className= "font-bold text-4xl font-palanquin text-center py-5">CATEGORIES</h1>
-      <div className='flex justify-center gap-10 flex-wrap px-5'>
+      <div className='flex justify-center md:gap-10 gap-2 flex-wrap px-5 py-2'>
         {CATEGORIES_CONFIG.map((category, index)=>((
         <CustomButton label={category} key={index}/>
-        )))}
+    )))}
       </div>
       <ul className= 'flex py-7 flex-wrap gap-5 justify-center px-4'>
         {/* {products?.map(product=>((

@@ -14,7 +14,8 @@ export default {
         seagreen :'#67a241',
         weed :"#dce1d2",
         grayish : '#4d4d49',
-        bundlebar : '#dce1d7'
+        bundlebar : '#dce1d7',
+        checkoutButton : "#504137"
       },
       fontFamily: {
   			palanquin: [

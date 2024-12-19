@@ -1,10 +1,10 @@
 export const CATEGORIES_CONFIG = [
-    "FIRST 5",
-    "NEXT 5",
-    "FIRST 5",
-    "NEXT 5",
-    "FIRST 5",
-    "NEXT 5",
-    "FIRST 5",
+    "FIRST 6",
+    "FIRST 7",
+    "FIRST 8",
+    "FIRST 9",
+    "FIRST 10",
+    "FIRST 11",
+    "FIRST 12",
    
 ]
