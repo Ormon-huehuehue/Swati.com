@@ -7,25 +7,28 @@ import { ProductCard } from './ProductCard';
 import CustomButton from './CustomButton';
 import {CATEGORIES_CONFIG} from "../config/constants"
 import CustomCarousel from './CustomCard';
+import { motion } from 'framer-motion';
 
 
 
 const Products = () => {
   const [products, setProducts] = useState<ProductInterface[] | null>(null);
   const [loading, setLoading] = useState(false);
+  const [category, setCategory] = useState("6")
 
- 
+    const onClickHandler= (category:string)=>{
+
+        console.log("Category -", category)
+        setCategory(category)
+    }
 
   useEffect(() => {
     
     const fetchProducts = async () => {
         try {
-          const response = await axios.post(
-            '/api/shopify/products',
-            {
-                "query": "query { products(first: 10) { edges { node { id title descriptionHtml images(first: 5) { edges { node { url } } } variants(first: 5) { edges { node { id title price { amount currencyCode } } } } } } } }"
-            }
-          );
+            const response = await axios.post('/api/shopify/products', {
+                category
+              });
       
           console.log('Products:', response.data.data.products.edges);
           
@@ -40,7 +43,7 @@ const Products = () => {
 
       fetchProducts()
 
-  }, []);
+  }, [category]);
 
 
   return (
@@ -48,8 +51,17 @@ const Products = () => {
       <h1 className= "font-bold text-4xl font-palanquin text-center py-5">CATEGORIES</h1>
       <div className='flex justify-center md:gap-10 gap-2 flex-wrap px-5 py-2'>
         {CATEGORIES_CONFIG.map((category, index)=>((
-        <CustomButton label={category} key={index}/>
-    )))}
+            <div key={index}>
+                <motion.button 
+                    whileHover={{scale:1.1}}
+                    whileTap={{scale:0.9}}
+                    onClick={()=>onClickHandler(category.value)}
+                    className= 'bg-weed text-grayish font-medium rounded-sm justify-center items-center w-[4rem] md:w-[7rem] xl:w-[10rem] py-3 text-[10px] md:text-xl'
+                >
+                    {category.label}
+                </motion.button>
+            </div>
+        )))}
       </div>
       <ul className= 'flex py-7 flex-wrap gap-5 justify-center px-4'>
         {/* {products?.map(product=>((

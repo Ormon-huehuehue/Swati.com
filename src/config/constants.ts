@@ -1,10 +1,10 @@
 export const CATEGORIES_CONFIG = [
-    "FIRST 6",
-    "FIRST 7",
-    "FIRST 8",
-    "FIRST 9",
-    "FIRST 10",
-    "FIRST 11",
-    "FIRST 12",
-   
-]
+    { label: "FIRST 6", value: "6" },
+    { label: "FIRST 7", value: "7" },
+    { label: "FIRST 8", value: "8" },
+    { label: "FIRST 9", value: "9" },
+    { label: "FIRST 10", value: "10" },
+    { label: "FIRST 11", value: "11" },
+    { label: "FIRST 12", value: "12" },
+  ];
+  

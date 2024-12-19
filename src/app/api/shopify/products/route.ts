@@ -5,13 +5,14 @@ export async function POST(req: NextRequest) {
     try {
       console.log("product api called");
 
-      const body = req.body
+      const body = await req.json();
       console.log("Body :", body)
+      const { category } = body;
   
       const response = await axios.post(
         'https://swaticosmetics-test.myshopify.com/api/2023-10/graphql.json',
         {
-            "query": "query { products(first: 12) { edges { node { id title descriptionHtml images(first: 5) { edges { node { url } } } variants(first: 5) { edges { node { id title price { amount currencyCode } } } } } } } }"
+            "query": `query { products(first: ${category}) { edges { node { id title descriptionHtml images(first: 5) { edges { node { url } } } variants(first: 5) { edges { node { id title price { amount currencyCode } } } } } } } }`
         },
         {
           headers: {
